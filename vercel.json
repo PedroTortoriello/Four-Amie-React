@@ -1,0 +1,11 @@
+{
+  "builds": [
+    {
+      "src": "path/to/your/source",
+      "use": "@vercel/node",
+      "config": {
+        "NODE_OPTIONS": "--openssl-legacy-provider"
+      }
+    }
+  ]
+}
