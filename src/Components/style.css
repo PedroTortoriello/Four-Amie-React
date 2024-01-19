@@ -218,10 +218,6 @@ input {
     padding: 3rem;
     transition: .4s;
   }
-
-  .nav__menu.show-menu {
-    right: 0;
-  }
 }
 
 .nav__list {
@@ -233,13 +229,6 @@ input {
 /* show menu */
 .show-menu {
   right: 0;
-}
-
-.toggle-password {
-  position: absolute;
-  top: 50%;
-  right: 10px;  
-  transform: translateY(-50%);
 }
 
 .nav__close {
