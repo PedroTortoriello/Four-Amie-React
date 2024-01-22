@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { RiEyeLine, RiEyeOffLine, RiMenu3Line, RiCloseLine } from 'react-icons/ri';
+import { FaLock } from 'react-icons/fa';
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
+import { useForm } from 'react-hook-form';
+
 
 const Header = () => {
   const [navMenuOpen, setNavMenuOpen] = useState(false);
   const [loginFormOpen, setLoginFormOpen] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showPassword2, setShowPassword2] = useState(false);
+  const { register, handleSubmit } = useForm();
 
   const toggleNavMenu = () => {
     setNavMenuOpen(!navMenuOpen);
@@ -15,28 +20,11 @@ const Header = () => {
     setLoginFormOpen(!loginFormOpen);
   };
 
-  const handlePasswordVisibility = (e, inputId) => {
-    e.preventDefault();
-    setShowPassword(!showPassword);
-    const passwordInput = document.getElementById(inputId);
-   
-    if (passwordInput) {
-       const type = showPassword ? 'password' : 'text';
-       passwordInput.type = type;
-       passwordInput.focus();
-    }
-  };
 
-  const handlePasswordVisibility2 = (e, inputId) => {
-    e.preventDefault();
-    setShowPassword2(!showPassword2);
-    const passwordInput = document.getElementById(inputId);
-  
-    if (passwordInput) {
-      const type = showPassword2 ? 'password' : 'text';
-      passwordInput.type = type;
-      passwordInput.focus();
-    }
+  const [visible, setVisible] = useState(false);
+
+  function HandleIsVisible() {
+    setVisible(!visible);
   };
 
 
@@ -105,26 +93,24 @@ const Header = () => {
                 />
                 <span className="lighting"></span>
               </div>
-              <div className="input-group">
-                <label className="placeholder" htmlFor="userPassword">
-                  Senha
-                  <span
-                    className="toggle-password"
-                    onClick={() => handlePasswordVisibility('userPassword')}
-                  >
-                    {showPassword ? <RiEyeOffLine /> : <RiEyeLine />}
-                  </span>
-                </label>
-                <input
-                  className="form-control"
-                  name="userPassword"
-                  id="userPassword"
-                  type={showPassword ? 'text' : 'password'}
-                  placeholder=""
-                  onFocus={(e) => handlePasswordVisibility(e)}
-                  onBlur={(e) => handlePasswordVisibility(e, 'userPassword')}
-                />
-              </div>
+
+            <div className="input-group flex flex-row items-center justify-center rounded-md bg-zinc-200 py-2 text-zinc-400">
+              
+              <input
+                placeholder="Senha"
+                className="form-control bg-zinc-200 text-zinc-500 focus:outline-none"
+                type={visible ? "text" : "password"}
+                {...register("password")}
+              />
+            
+              <span className="password-toggle cursor-pointer transition" onClick={HandleIsVisible}>
+                {visible ? (
+                  <AiFillEye size={20} className="mr-2" />
+                ) : (
+                  <AiFillEyeInvisible size={20} className="mr-2" />
+                )}
+              </span>
+            </div>
 
               <button type="submit" id="login">
                 Entrar
@@ -168,24 +154,21 @@ const Header = () => {
                 />
                 <span className="lighting"></span>
               </div>
-              <div className="input-group">
-                <label className="placeholder" htmlFor="userPassword2">
-                  <div style={{ display: 'flex', alignItems: 'center' }}>
-                    Senha
-                    <span className="toggle-password" style={{ marginLeft: '8px' }}>
-                      {showPassword2 ? <RiEyeOffLine /> : <RiEyeLine />}
-                    </span>
-                  </div>
-                </label>
+              <div className="input-group flex flex-row items-center justify-center rounded-md bg-zinc-200 py-2 text-zinc-400">
+  
                 <input
-                  className="form-control"
-                  name="userPassword"
-                  id="userPassword2"
-                  type={showPassword2 ? 'text' : 'password'}
-                  placeholder=""
-                  onFocus={(e) => handlePasswordVisibility2(e)}
-                  onBlur={(e) => handlePasswordVisibility2(e, 'userPassword2')}
+                  placeholder="Senha"
+                  className="bg-zinc-200 text-zinc-500 focus:outline-none"
+                  type={visible ? "text" : "password"}
+                  {...register("password")}
                 />
+                <span className="password-toggle cursor-pointer transition" onClick={HandleIsVisible}>
+                  {visible === false ? (
+                    <AiFillEye size={20} className="mr-2" />
+                  ) : (
+                    <AiFillEyeInvisible size={20} className="mr-2" />
+                  )}
+                </span>
               </div>
             
 

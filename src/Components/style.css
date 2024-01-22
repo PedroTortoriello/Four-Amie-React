@@ -242,73 +242,14 @@ input {
   display: none;
 }
 
-
-/*=============== LOGIN ===============*/
-.login-container {
+.password-toggle {
   position: relative;
-}
-
-.login-form-mobile {
-  display: none; 
-}
-
-.login-btn {
+  left: -30px; /* Ajuste conforme necessário para a posição horizontal */
   cursor: pointer;
-  background: #00A885;
-  border: 0;
-  padding: 10px 15px;
-  color: #fff;
-  font-size: 20px;
-  font-weight: 400;
-  border-radius: 10px;
-}
-
-.login-form {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 350px;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  z-index: 1; /* Garante que o formulário apareça acima do conteúdo abaixo */
-}
-
-.login-container:hover .login-form {
-  display: block;
-}
-
-.nav__item:hover .login-form {
-  display: block; /* Exibir a caixa ao passar o mouse sobre o botão */
-}
-
-/* Adicione este estilo para centralizar a caixa abaixo do botão */
-.login-form::before {
-  content: "";
-  display: block;
-  height: 0;
-  width: 100%;
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-}
-
-/* Adicione este estilo para centralizar o conteúdo dentro da caixa */
-.login-form .inner-warpper {
-  box-sizing: border-box;
-  margin: 0 auto;
+  z-index: 1; /* Certifique-se de que o ícone fique acima do campo de senha */
 }
 
 
-.animate {
-  -webkit-transition: all 0.3s linear;
-  transition: all 0.3s linear;
-}
-.text-center {
-  text-align: center;
-}
 .pull-left {
   float: left;
 }
@@ -526,14 +467,6 @@ span.validate-tooltip {
   }
 }
 
-.placeholder i {
-  cursor: pointer;
-}
-
-.form-control:focus + .placeholder i,
-.placeholder i:focus {
-    display: inline-block; /* Quando a caixa de senha está focada ou o ícone está focado, o ícone é exibido */
-}
 
 /*=============== HOME ===============*/
 .home__img img {
@@ -1008,6 +941,10 @@ span.validate-tooltip {
     padding: 10px; /* Adicione algum preenchimento para melhorar a aparência */
   }
 
+  .password-tgg{
+    border: 2px solid black
+  }
+
   .palceholder{
     border-radius: 5px;
   }
@@ -1015,4 +952,9 @@ span.validate-tooltip {
     margin-top: 5px;
   }
 
+}
+
+.password-box .input-group{
+  border: 2px solid black;
+  border-radius: 5px;
 }
